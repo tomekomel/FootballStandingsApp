@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace BallGame;
 
 
+use BallGame\Exception\BadTeamNameException;
+use PHPUnit\Runner\Exception;
+
 class Match
 {
 	private $homeTeam;
@@ -30,6 +33,9 @@ class Match
 	 */
 	public static function create( $homeTeam, $awayTeam, $homeTeamPoints, $awayTeamPoints)
 	{
+		if ($homeTeam->getName() == $awayTeam->getName()) {
+			throw new BadTeamNameException();
+		}
 		return new self($homeTeam, $awayTeam, $homeTeamPoints, $awayTeamPoints);
 	}
 
