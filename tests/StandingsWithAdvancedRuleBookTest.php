@@ -10,7 +10,7 @@ use BallGame\Team;
 use BallGame\Match;
 use PHPUnit\Framework\TestCase;
 
-class StandingsTest extends TestCase
+class StandingsWithAdvancedRuleBookTest extends TestCase
 {
 	/**
 	 * @var Standings
@@ -20,7 +20,7 @@ class StandingsTest extends TestCase
 
     public function setUp()
     {
-    	$this->ruleBook = new SimpleRuleBook();
+    	$this->ruleBook = new AdvancedRuleBook();
         $this->standings = Standings::create($this->ruleBook);
     }
 
