@@ -22,6 +22,11 @@ class TeamPosition
 		$this->pointsAgaints = 0;
 	}
 
+	public function getTeam()
+	{
+		return $this->team;
+	}
+
 	/**
 	 * @return mixed
 	 */

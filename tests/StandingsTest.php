@@ -47,7 +47,7 @@ class StandingsTest extends TestCase
 		$tigers = Team::create('Tigers');
 		$elephants = Team::create('Elephants');
 
-		$match = Match::create($tigers, $elephants, 2, 1);
+		$match = Match::create($tigers, $elephants, 1, 2);
 
 		$this->standings->record($match);
 

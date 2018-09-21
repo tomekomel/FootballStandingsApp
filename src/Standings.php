@@ -12,6 +12,11 @@ class Standings
 	 */
 	private $matches;
 
+	/**
+	 * @var TeamPosition
+	 */
+	private $teamPositions;
+
     private function __construct()
     {
 
@@ -29,10 +34,56 @@ class Standings
 
 	public function getSortedStandings()
 	{
-		return [
-			['Tigers', 2, 1, 3],
-			['Elephants', 1, 2, 0],
-		];
+		foreach($this->matches as $match) {
+			if(!isset($this->teamPositions[spl_object_hash($match->getHomeTeam())])) {
+				$this->teamPositions[spl_object_hash($match->getHomeTeam())] = new TeamPosition($match->getHomeTeam());
+			}
+			$homeTeamPosition = $this->teamPositions[spl_object_hash($match->getHomeTeam())];
+
+			if(!isset($this->teamPositions[spl_object_hash($match->getAwayTeam())])) {
+				$this->teamPositions[spl_object_hash($match->getAwayTeam())] = new TeamPosition($match->getAwayTeam());
+			}
+			$awayTeamPosition = $this->teamPositions[spl_object_hash($match->getAwayTeam())];
+
+			if($match->getHomeTeamPoints() > $match->getAwayTeamPoints()) {
+				$homeTeamPosition->recordWin();
+			}
+
+			if($match->getAwayTeamPoints() > $match->getHomeTeamPoints()) {
+				$awayTeamPosition->recordWin();
+			}
+
+			$homeTeamPosition->recordPointsScored($match->getHomeTeamPoints());
+			$homeTeamPosition->recordPointsAgaints($match->getAwayTeamPoints());
+
+			$awayTeamPosition->recordPointsScored($match->getAwayTeamPoints());
+			$awayTeamPosition->recordPointsAgaints($match->getHomeTeamPoints());
+
+			uasort( $this->teamPositions, function (TeamPosition $teamA, TeamPosition $teamB) {
+				if ($teamA->getPoints() > $teamB->getPoints()) {
+					return -1;
+				}
+
+				if ($teamA->getPoints() < $teamB->getPoints()) {
+					return 1;
+				}
+
+				return 0;
+			});
+
+			$finalStandings = [];
+
+			foreach ($this->teamPositions as $teamPosition) {
+				$finalStandings[] = [
+					$teamPosition->getTeam()->getName(),
+					$teamPosition->getPointsScored(),
+					$teamPosition->getPointsAgaints(),
+					$teamPosition->getPoints()
+				];
+			}
+
+			return $finalStandings;
+		}
 	}
 }
 
