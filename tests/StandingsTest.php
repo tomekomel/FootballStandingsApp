@@ -57,8 +57,8 @@ class StandingsTest extends TestCase
 		// Then
 		$this->assertSame(
 			[
-				['Elephants', 1, 0, 3],
-				['Tigers', 0, 1, 0],
+				['Elephants', 2, 1, 3],
+				['Tigers', 1, 2, 0],
 			],
 			$actualStandings
 		);
