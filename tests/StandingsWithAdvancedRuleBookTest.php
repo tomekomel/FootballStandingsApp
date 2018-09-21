@@ -24,6 +24,9 @@ class StandingsWithAdvancedRuleBookTest extends TestCase
         $this->standings = Standings::create($this->ruleBook, new MatchRepository());
     }
 
+	/**
+	 * @group integration
+	 */
     public function testGetStandingsReturnsSortedLeagueStandings()
     {
     	$tigers = Team::create('Tigers');
@@ -46,6 +49,9 @@ class StandingsWithAdvancedRuleBookTest extends TestCase
 		);
     }
 
+	/**
+	 * @group integration
+	 */
 	public function testGetStandingsReturnsSortedLeagueStandingsWhenSecondTeamEndsUpInFirstPlace()
 	{
 		$tigers = Team::create('Tigers');

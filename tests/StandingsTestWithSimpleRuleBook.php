@@ -24,7 +24,7 @@ class StandingsTestWithSimpleRuleBook extends TestCase
         $this->standings = Standings::create($this->ruleBook, new MatchRepository());
     }
 
-    public function testGetStandingsReturnsSortedLeagueStandings()
+	public function testGetStandingsReturnsSortedLeagueStandings()
     {
     	$tigers = Team::create('Tigers');
     	$elephants = Team::create('Elephants');
