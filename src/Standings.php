@@ -79,6 +79,51 @@ class Standings
 			return $finalStandings;
 		}
 	}
+
+	public function getWonMatches()
+	{
+		foreach($this->matchesRepository->findAll() as $match) {
+			if(!isset($this->teamPositions[$match->getHomeTeam()->getName()])) {
+				$this->teamPositions[$match->getHomeTeam()->getName()] = new TeamPosition($match->getHomeTeam());
+			}
+			$homeTeamPosition = $this->teamPositions[$match->getHomeTeam()->getName()];
+
+			if(!isset($this->teamPositions[$match->getAwayTeam()->getName()])) {
+				$this->teamPositions[$match->getAwayTeam()->getName()] = new TeamPosition($match->getAwayTeam());
+			}
+			$awayTeamPosition = $this->teamPositions[$match->getAwayTeam()->getName()];
+
+			if($match->getHomeTeamPoints() > $match->getAwayTeamPoints()) {
+				$homeTeamPosition->recordWin();
+			}
+
+			if($match->getAwayTeamPoints() > $match->getHomeTeamPoints()) {
+				$awayTeamPosition->recordWin();
+			}
+
+			$homeTeamPosition->recordPointsScored($match->getHomeTeamPoints());
+			$homeTeamPosition->recordPointsAgaints($match->getAwayTeamPoints());
+
+			$awayTeamPosition->recordPointsScored($match->getAwayTeamPoints());
+			$awayTeamPosition->recordPointsAgaints($match->getHomeTeamPoints());
+		}
+
+		uasort( $this->teamPositions, [$this->ruleBook, 'decide']);
+
+		$finalStandings = [];
+
+		foreach ($this->teamPositions as $teamPosition) {
+			$finalStandings[] = [
+				$teamPosition->getTeam()->getName(),
+				$teamPosition->getPointsScored(),
+				$teamPosition->getPointsAgaints(),
+				$teamPosition->getPoints(),
+				$teamPosition->getMatchesWon()
+			];
+		}
+
+		return $finalStandings;
+	}
 }
 
 

@@ -11,6 +11,7 @@ class TeamPosition
 {
 	private $team;
 	private $points;
+	private $matchesWon;
 	private $pointsScored;
 	private $pointsAgaints;
 
@@ -18,6 +19,7 @@ class TeamPosition
 	{
 		$this->team = $team;
 		$this->points = 0;
+		$this->matchesWon = 0;
 		$this->pointsScored = 0;
 		$this->pointsAgaints = 0;
 	}
@@ -51,9 +53,15 @@ class TeamPosition
 		return $this->pointsAgaints;
 	}
 
+	public function getMatchesWon()
+	{
+		return $this->matchesWon;
+	}
+
 	public function recordWin()
 	{
 		$this->points += 3;
+		$this->matchesWon += 1;
 	}
 
 	public function recordPointsScored(int $pointsScored)
