@@ -10,7 +10,7 @@ use BallGame\Team;
 use BallGame\Match;
 use PHPUnit\Framework\TestCase;
 
-class StandingsWithAdvancedRuleBookTest extends TestCase
+class StandingsExceptionsTest extends TestCase
 {
 	/**
 	 * @var Standings
@@ -20,7 +20,7 @@ class StandingsWithAdvancedRuleBookTest extends TestCase
 
     public function setUp()
     {
-    	$this->ruleBook = new AdvancedRuleBook();
+    	$this->ruleBook = new SimpleRuleBook();
         $this->standings = Standings::create($this->ruleBook);
     }
 
@@ -45,27 +45,5 @@ class StandingsWithAdvancedRuleBookTest extends TestCase
 			$actualStandings
 		);
     }
-
-	public function testGetStandingsReturnsSortedLeagueStandingsWhenSecondTeamEndsUpInFirstPlace()
-	{
-		$tigers = Team::create('Tigers');
-		$elephants = Team::create('Elephants');
-
-		$match = Match::create($tigers, $elephants, 1, 2);
-
-		$this->standings->record($match);
-
-		// When
-		$actualStandings = $this->standings->getSortedStandings();
-
-		// Then
-		$this->assertSame(
-			[
-				['Elephants', 2, 1, 3],
-				['Tigers', 1, 2, 0],
-			],
-			$actualStandings
-		);
-	}
 	
 }

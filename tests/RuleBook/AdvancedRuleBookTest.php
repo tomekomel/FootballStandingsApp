@@ -46,7 +46,10 @@ class AdvancedRuleBookTest extends TestCase
 		$this->teamAPosition->method('getPoints')->willReturn(1);
 		$this->teamBPosition->method('getPoints')->willReturn(1);
 
-		$this->assertSame(0, $this->advancedRuleBook->decide($this->teamAPosition, $this->teamBPosition));
+		$this->teamAPosition->method('getPointsScored')->willReturn(10);
+		$this->teamBPosition->method('getPointsScored')->willReturn(1);
+
+		$this->assertSame(-1, $this->advancedRuleBook->decide($this->teamAPosition, $this->teamBPosition));
 	}
 
 }

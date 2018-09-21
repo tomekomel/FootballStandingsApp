@@ -10,7 +10,7 @@ use BallGame\Team;
 use BallGame\Match;
 use PHPUnit\Framework\TestCase;
 
-class StandingsTest extends TestCase
+class StandingsTestWithSimpleRuleBook extends TestCase
 {
 	/**
 	 * @var Standings

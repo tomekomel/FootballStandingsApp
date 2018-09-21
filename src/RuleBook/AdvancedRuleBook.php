@@ -19,6 +19,16 @@ class AdvancedRuleBook implements RuleBookInterface
 			return 1;
 		}
 
+		if ($teamA->getPoints() == $teamB->getPoints()) {
+			if ($teamA->getPointsScored() > $teamB->getPointsScored()) {
+				return -1;
+			}
+
+			if ($teamA->getPointsScored() < $teamB->getPointsScored()) {
+				return 1;
+			}
+		}
+
 		return 0;
 	}
 
