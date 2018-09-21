@@ -11,7 +11,7 @@ class Standings
 	/**
 	 * @var Match[]
 	 */
-	private $matches;
+	private $matchesRepository;
 
 	/**
 	 * @var TeamPosition
@@ -20,24 +20,25 @@ class Standings
 
 	private $ruleBook;
 
-    private function __construct(RuleBookInterface $ruleBook)
+    private function __construct(RuleBookInterface $ruleBook, MatchRepository $matchesRepository)
     {
 		$this->ruleBook = $ruleBook;
+		$this->matchesRepository = $matchesRepository;
     }
 
-	public static function create(RuleBookInterface $ruleBook)
+	public static function create(RuleBookInterface $ruleBook, MatchRepository $matchesRepository)
 	{
-		return new self($ruleBook);
+		return new self($ruleBook, $matchesRepository);
 	}
 
 	public function record(Match $match)
 	{
-		$this->matches[] = $match;
+		$this->matchesRepository->save($match);
 	}
 
 	public function getSortedStandings()
 	{
-		foreach($this->matches as $match) {
+		foreach($this->matchesRepository->findAll() as $match) {
 			if(!isset($this->teamPositions[spl_object_hash($match->getHomeTeam())])) {
 				$this->teamPositions[spl_object_hash($match->getHomeTeam())] = new TeamPosition($match->getHomeTeam());
 			}

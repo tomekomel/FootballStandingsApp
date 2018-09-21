@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace BallGame\Tests;
 
+use BallGame\MatchRepository;
 use BallGame\RuleBook\AdvancedRuleBook;
-use BallGame\RuleBook\SimpleRuleBook;
 use BallGame\Standings;
 use BallGame\Team;
 use BallGame\Match;
@@ -21,7 +21,7 @@ class StandingsWithAdvancedRuleBookTest extends TestCase
     public function setUp()
     {
     	$this->ruleBook = new AdvancedRuleBook();
-        $this->standings = Standings::create($this->ruleBook);
+        $this->standings = Standings::create($this->ruleBook, new MatchRepository());
     }
 
     public function testGetStandingsReturnsSortedLeagueStandings()
