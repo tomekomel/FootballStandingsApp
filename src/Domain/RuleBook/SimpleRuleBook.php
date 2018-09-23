@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace BallGame\Domain\RuleBook;
 
-use BallGame\Domain\TeamPosition;
 
+use BallGame\Domain\Team\TeamPosition;
 
 class SimpleRuleBook implements RuleBookInterface
 {

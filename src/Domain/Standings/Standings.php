@@ -2,11 +2,12 @@
 declare(strict_types=1);
 
 
-namespace BallGame\Domain;
+namespace BallGame\Domain\Standings;
 
 
 use BallGame\Domain\RuleBook\RuleBookInterface;
-use BallGame\Domain\Match;
+use BallGame\Domain\Match\Match;
+use BallGame\Domain\Team\TeamPosition;
 use BallGame\Repository\MatchRepository;
 
 class Standings

@@ -6,7 +6,7 @@ namespace BallGame\Exception;
 
 
 use BallGame\Domain\Exception\BadTeamNameException;
-use BallGame\Domain\Team;
+use BallGame\Domain\Team\Team;
 use PHPUnit\Framework\TestCase;
 
 class TeamTest extends TestCase

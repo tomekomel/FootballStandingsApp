@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BallGame\Repository;
 
 
-use BallGame\Domain\Match;
+use BallGame\Domain\Match\Match;
 
 class MatchRepository
 {

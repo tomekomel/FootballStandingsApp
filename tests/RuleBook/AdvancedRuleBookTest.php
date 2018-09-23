@@ -1,11 +1,13 @@
 <?php
 declare(strict_types=1);
 
+
 namespace BallGame\Tests;
 
-use BallGame\Domain\Standings;
+
+use BallGame\Domain\Standings\Standings;
 use BallGame\Domain\RuleBook\AdvancedRuleBook;
-use BallGame\Domain\TeamPosition;
+use BallGame\Domain\Team\TeamPosition;
 use PHPUnit\Framework\TestCase;
 
 class AdvancedRuleBookTest extends TestCase

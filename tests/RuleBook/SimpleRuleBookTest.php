@@ -5,7 +5,7 @@ namespace BallGame\Tests;
 
 use BallGame\Domain\Standings;
 use BallGame\Domain\RuleBook\SimpleRuleBook;
-use BallGame\Domain\TeamPosition;
+use BallGame\Domain\Team\TeamPosition;
 use PHPUnit\Framework\TestCase;
 
 class SimpleRuleBookTest extends TestCase

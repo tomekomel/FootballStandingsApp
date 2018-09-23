@@ -2,11 +2,12 @@
 declare(strict_types=1);
 
 
-namespace BallGame\Exception;
+namespace BallGame\Tests;
+
 
 use BallGame\Domain\Exception\BadTeamNameException;
-use BallGame\Domain\Match;
-use BallGame\Domain\Team;
+use BallGame\Domain\Match\Match;
+use BallGame\Domain\Team\Team;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase

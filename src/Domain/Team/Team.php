@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace BallGame\Domain;
+namespace BallGame\Domain\Team;
 
 
 use BallGame\Domain\Exception\BadTeamNameException;

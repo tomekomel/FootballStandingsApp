@@ -2,10 +2,11 @@
 declare(strict_types=1);
 
 
-namespace BallGame\Domain;
+namespace BallGame\Domain\Match;
 
 
 use BallGame\Domain\Exception\BadTeamNameException;
+use BallGame\Domain\Team\Team;
 use PHPUnit\Runner\Exception;
 
 class Match

@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
+
 namespace BallGame\Tests;
 
-use BallGame\Domain\Standings;
-use BallGame\Domain\Team;
-use BallGame\Domain\TeamPosition;
+
+use BallGame\Domain\Team\Team;
+use BallGame\Domain\Team\TeamPosition;
 use PHPUnit\Framework\TestCase;
 
 class TeamPositionTest extends TestCase

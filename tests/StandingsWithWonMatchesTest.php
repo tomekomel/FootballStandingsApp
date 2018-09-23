@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
+
 namespace BallGame\Tests;
+
 
 use BallGame\Repository\MatchRepository;
 use BallGame\Domain\RuleBook\SimpleRuleBook;
-use BallGame\Domain\Standings;
-use BallGame\Domain\Team;
-use BallGame\Domain\Match;
+use BallGame\Domain\Standings\Standings;
+use BallGame\Domain\Team\Team;
+use BallGame\Domain\Match\Match;
 use PHPUnit\Framework\TestCase;
 
 class StandingsWithWonMatchesTest extends TestCase
