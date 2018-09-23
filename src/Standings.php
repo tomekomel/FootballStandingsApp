@@ -62,22 +62,22 @@ class Standings
 
 			$awayTeamPosition->recordPointsScored($match->getAwayTeamPoints());
 			$awayTeamPosition->recordPointsAgaints($match->getHomeTeamPoints());
-
-			uasort( $this->teamPositions, [$this->ruleBook, 'decide']);
-
-			$finalStandings = [];
-
-			foreach ($this->teamPositions as $teamPosition) {
-				$finalStandings[] = [
-					$teamPosition->getTeam()->getName(),
-					$teamPosition->getPointsScored(),
-					$teamPosition->getPointsAgaints(),
-					$teamPosition->getPoints()
-				];
-			}
-
-			return $finalStandings;
 		}
+
+		uasort( $this->teamPositions, [$this->ruleBook, 'decide']);
+
+		$finalStandings = [];
+
+		foreach ($this->teamPositions as $teamPosition) {
+			$finalStandings[] = [
+				$teamPosition->getTeam()->getName(),
+				$teamPosition->getPointsScored(),
+				$teamPosition->getPointsAgaints(),
+				$teamPosition->getPoints()
+			];
+		}
+
+		return $finalStandings;
 	}
 
 	public function getWonMatches()
