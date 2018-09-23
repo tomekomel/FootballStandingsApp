@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace BallGame\Exception;
 
 
-use BallGame\Team;
+use BallGame\Domain\Exception\BadTeamNameException;
+use BallGame\Domain\Team;
 use PHPUnit\Framework\TestCase;
 
 class TeamTest extends TestCase

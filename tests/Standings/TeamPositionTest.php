@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace BallGame\Tests;
 
-use BallGame\Standings;
-use BallGame\Team;
-use BallGame\TeamPosition;
+use BallGame\Domain\Standings;
+use BallGame\Domain\Team;
+use BallGame\Domain\TeamPosition;
 use PHPUnit\Framework\TestCase;
 
 class TeamPositionTest extends TestCase

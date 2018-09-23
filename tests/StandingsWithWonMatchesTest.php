@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace BallGame\Tests;
 
-use BallGame\MatchRepository;
-use BallGame\RuleBook\AdvancedRuleBook;
-use BallGame\RuleBook\SimpleRuleBook;
-use BallGame\Standings;
-use BallGame\Team;
-use BallGame\Match;
+use BallGame\Repository\MatchRepository;
+use BallGame\Domain\RuleBook\SimpleRuleBook;
+use BallGame\Domain\Standings;
+use BallGame\Domain\Team;
+use BallGame\Domain\Match;
 use PHPUnit\Framework\TestCase;
 
 class StandingsWithWonMatchesTest extends TestCase

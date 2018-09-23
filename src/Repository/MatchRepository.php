@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 
-namespace BallGame;
+namespace BallGame\Repository;
 
-use BallGame\Team;
-use BallGame\Standings;
+
+use BallGame\Domain\Match;
 
 class MatchRepository
 {

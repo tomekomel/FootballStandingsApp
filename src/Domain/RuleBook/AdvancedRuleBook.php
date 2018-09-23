@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 
-namespace BallGame\RuleBook;
+namespace BallGame\Domain\RuleBook;
 
-use BallGame\TeamPosition;
+use BallGame\Domain\TeamPosition;
 
 
 class AdvancedRuleBook implements RuleBookInterface

@@ -2,9 +2,7 @@
 declare(strict_types=1);
 
 
-namespace BallGame;
-
-use BallGame\Team;
+namespace BallGame\Domain;
 
 
 class TeamPosition
